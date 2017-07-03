@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Frontend Starter Theme</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link href="css/main.css" rel="stylesheet">
+</head>
+<body>
+    <!-- <div id="root" class="container">
+        <h1>{{ message }}</h1>
+    </div> -->
+
+    <div class="container">
+        <div id="app">
+            <step-navigation
+                :steps="steps"
+                :currentstep="currentstep">
+            </step-navigation>
+            <div v-if="currentstep == 1">
+                <h1>Step 1</h1>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+            </div>
+            <div v-if="currentstep == 2">
+                <h1>Step 2</h1>
+                <div class="form-group">
+                    <label for="exampleSelect1">Example select</label>
+                    <select class="form-control" id="exampleSelect1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+            <div v-if="currentstep == 3">
+                <h1>Step 3</h1>
+                <div class="form-group">
+                    <label for="exampleTextarea">Example textarea</label>
+                    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">File input</label>
+                    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                    <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                </div>
+            </div>
+            <step
+                v:for="step in steps"
+                :step="step"
+                :stepcount="steps.length"
+                :currentstep="currentstep"
+                @step-change="stepChanged">
+            </step>
+
+            <template id="step-navigation-template">
+                <ol class="step-indicator">
+                    <li
+                        v-for="step in steps"
+                        is="step-navigation-step"
+                        :step="step"
+                        :currentstep="currentstep">
+                    </li>
+                </ol>
+            </template>
+
+            <template id="step-navigation-step-template">
+                <li v-bind:class="indicatorclass">
+                    <div class="step"><i :class="step.icon_class"></i></div>
+                    <div class="caption hidden-xs hidden-sm">
+                        Step {{ step.id }}: {{ step.title }}
+                    </div>
+                </li>
+            </template>
+
+            <template id="step-template">
+                <div class="step-wrapper" v-bind:class="{ 'active': active }">
+                    <button
+                            class="btn btn-primary"
+                            @click="lastStep"
+                            :disabled="firststep">
+                        Back
+                    </button>
+                    <button
+                            class="btn btn-primary"
+                            @click="nextStep"
+                            :disabled="laststep">
+                        Next
+                    </button>
+                    <button
+                            class="btn btn-primary"
+                            v-if="laststep">
+                        Submit
+                    </button>
+                </div>
+            </template>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>

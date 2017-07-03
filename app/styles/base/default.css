@@ -1,0 +1,54 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.container {
+    @apply --container;
+}
+
+.clearfix {
+    @apply --clearfix;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.main-header,
+.main-footer {
+    flex: 0 0 auto;
+}
+
+.main-container {
+    flex: 1 1 auto;
+
+    .container {
+        display: flex;
+    }
+}
+
+.main-content {
+    flex: 0 1 75%;
+}
+
+.main-sidebar {
+    flex: 0 1 25%;
+    padding-left: 30px;
+}
+
+h1 {
+    color: var(--dark-color);
+    font-size: 32px;
+}

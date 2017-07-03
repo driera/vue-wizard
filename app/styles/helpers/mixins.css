@@ -1,0 +1,30 @@
+:root {
+    --clearfix {
+        &:before,
+        &:after {
+            content: "";
+            display: table;
+        }
+
+        &:after {
+            clear: both;
+        }
+    }
+
+    --container {
+        padding: 0 15px;
+        margin: 0 auto;
+
+        @media (--min-desktop) {
+            width: 750px;
+        }
+
+        @media (--min-desktop-large) {
+            width: 970px;
+        }
+
+        @media (--min-desktop-xlarge) {
+            width: 1170px;
+        }
+    }
+}
